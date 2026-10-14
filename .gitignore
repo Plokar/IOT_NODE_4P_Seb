@@ -1,0 +1,7 @@
+# MPLAB X IDE generated files
+**/build/
+**/dist/
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+**/nbproject/Package-*.zip
