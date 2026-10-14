@@ -90,6 +90,9 @@ int main(void) {
     while (true) {
 
         mcp9808_temp_read();
+        
+        
+        //SERCOM2_SPI_Read();
 
         SYS_Tasks();
     }
