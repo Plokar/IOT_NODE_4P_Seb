@@ -34,24 +34,41 @@
 // *****************************************************************************
 // *****************************************************************************
 
-int main ( void )
-{
+int main(void) {
     /* Initialize all modules */
-    SYS_Initialize ( NULL );
+    SYS_Initialize(NULL);
+    printf("start");
+    
+    
+    uint8_t devices[20] = {0};
+    uint8_t count = 0;
 
-    while ( true )
-    {
-        /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
+    bool status = SERCOM0_I2C_BusScan(
+            0x08,
+            0x77,
+            devices,
+            &count
+            );
+
+    printf("I2C scan status: %s\r\n", status ? "OK" : "FAIL");
+    printf("Pocet nalezenych zarizeni: %u\r\n", count);
+
+    for (uint8_t i = 0; i < count; i++) {
+        printf("Zarizeni %u: adresa 0x%02X\r\n", i + 1, devices[i]);
+    }
+
+    while (true) {
+
+        SYS_Tasks();
     }
 
     /* Execution should not come here during normal operation */
 
-    return ( EXIT_FAILURE );
+    return ( EXIT_FAILURE);
 }
 
 
 /*******************************************************************************
  End of File
-*/
+ */
 
