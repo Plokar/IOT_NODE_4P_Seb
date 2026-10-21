@@ -522,6 +522,20 @@ data:
       attributes:
         id: SPI_DIPO
         label: SPI Data In Pad Selection
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: '3'
+          type: User
+        type: Values
       type: KeyValueSet
     SPI_DOPO:
       attributes:

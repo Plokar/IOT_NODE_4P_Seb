@@ -62,7 +62,7 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\peripheral\sercom\i2c_master\plib_sercom_i2c_master_common.h
   hash: f167b04b3c6a0f83fe41b7b6f810cbf0a48b8ca7d5a747b76463dd53d3c1a2a2
 - file: ..\src\config\default\peripheral\sercom\spi_master\plib_sercom2_spi_master.c
-  hash: 99f9922d51ca839e5c700920d163a555eb63641d83101da0a2f2341c94dca9c1
+  hash: ab582482fdc449f11a5b82275dd1d73b092b5e4b0f9a9579785babee68324f03
 - file: ..\src\config\default\peripheral\sercom\spi_master\plib_sercom2_spi_master.h
   hash: c558db3860f3f81dea950f84ed9ea3c07634dd0368302968a49a43a52818395a
 - file: ..\src\config\default\peripheral\sercom\spi_master\plib_sercom_spi_master_common.h
