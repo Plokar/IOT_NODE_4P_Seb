@@ -26,7 +26,8 @@
 #include <stdbool.h>                    
 #include <stdlib.h>                     
 #include <string.h>
-#include "definitions.h"                
+#include "definitions.h"
+#include "interrupts.h"                
 
 #define MCP9808_ADDR       0x1C
 #define MCP9808_REG_TEMP   0x05
@@ -38,7 +39,7 @@
 #define SPI_WIP            0x01
 #define SPI_WEL            0x02
 
-/* 25CSM04 (Curiosity Nano Explorer): 4 Mbit = 512 KB, 24bitova adresa (3 bajty), stranka 256 B */
+/* 4 Mbit = 512 KB, 24bitova adresa (3 bajty), stranka 256 B */
 #define EEPROM_SIZE        (512UL * 1024UL)
 #define EEPROM_PAGE_SIZE   256UL
 
@@ -51,7 +52,7 @@
 // Section: Main Entry Point
 // *****************************************************************************
 // *****************************************************************************
-
+volatile static bool btn_flag = false;
 int sensor_read = 0;
 char sign;
 float teplota;
@@ -86,8 +87,6 @@ DeviceConfig_t config = {
 
 DeviceConfig_t loaded_config;
 
-
-
 static bool SPI_Transfer(uint8_t *tx, uint8_t *rx, size_t lenght) {
     if (!SERCOM2_SPI_WriteRead(tx, lenght, rx, lenght)) {
         return false;
@@ -115,7 +114,6 @@ static bool SPI_ReadOnly(uint8_t *rx, size_t length) {
     return true;
 }
 
-/* Prikaz + 24bitova adresa (25CSM04 vyzaduje 3 adresove bajty) */
 static void EEPROM_SetHeader(uint8_t *hdr, uint8_t cmd, uint32_t address) {
     hdr[0] = cmd;
     hdr[1] = (uint8_t) (address >> 16);
@@ -172,7 +170,6 @@ static bool EEPROM_WaitReady(void) {
     return false;
 }
 
-/* Zapis v ramci jedne stranky (nesmi prekrocit hranici 256 B stranky) */
 static bool EEPROM_WritePage(uint32_t address, const uint8_t *data, size_t length) {
     if (!EEPROM_WriteEnable()) {
         return false;
@@ -229,7 +226,6 @@ static bool EEPROM_WriteBuffer(uint32_t address, const uint8_t *data, size_t len
     return true;
 }
 
-/* Sekvencni cteni: prikaz + 3B adresa, pak libovolny pocet bajtu */
 static bool EEPROM_ReadBuffer(uint32_t address, uint8_t *data, size_t length) {
     if (length == 0) {
         return true;
@@ -354,15 +350,25 @@ bool pop(float *x){
     return true;
 }
 
+void btn_callback(uintptr_t context){
+    btn_flag = true;
+}
+
 int main(void) {
     /* Initialize all modules */
     SYS_Initialize(NULL);
-
+    EIC_CallbackRegister(EIC_PIN_15, btn_callback, 0);
     uint8_t readback = 0;
     zapis_conf();
     nacti_conf();
 
     while (true) {
+        
+        if(btn_flag == true){
+            btn_flag = false;
+            printf("tlac");
+        
+        }
 
 //        mcp9808_temp_read();
 //        push(teplota);

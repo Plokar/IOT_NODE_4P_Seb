@@ -1238,7 +1238,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: '0x7'
+            value: '0x5'
           type: Dynamic
         type: Values
       type: String
@@ -1261,7 +1261,7 @@ data:
       children:
       - children:
         - attributes:
-            value: 'True'
+            value: ''
           type: User
         type: Values
       type: String
@@ -1315,12 +1315,6 @@ data:
       attributes:
         id: PIN_39_FUNCTION_NAME
         label: Name
-      children:
-      - children:
-        - attributes:
-            value: Tlac
-          type: User
-        type: Values
       type: String
     PIN_39_PULLEN:
       attributes:

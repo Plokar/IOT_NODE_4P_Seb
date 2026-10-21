@@ -77,10 +77,6 @@
 #define CS_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 14U)) & 0x01U)
 #define CS_PIN                  PORT_PIN_PA14
 
-/*** Macros for Tlac pin ***/
-#define Tlac_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 27U)) & 0x01U)
-#define Tlac_PIN                  PORT_PIN_PA27
-
 // *****************************************************************************
 /* PORT Group
 
