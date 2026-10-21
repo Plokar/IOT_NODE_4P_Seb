@@ -31,7 +31,7 @@ Pin Number,Pin ID,Custom Name,Function,Mode, Direction,Latch,Pull Up,Pull Down,D
 34,PA25,,Available,,,,,,NORMAL
 37,PB22,,Available,,,,,,NORMAL
 38,PB23,,Available,,,,,,NORMAL
-39,PA27,,Available,,,,,,NORMAL
+39,PA27,Tlac,EIC_EXTINT15,Digital,In,n/a,Yes,No,NORMAL
 41,PA28,,Available,,,,,,NORMAL
 45,PA30,,Available,,,,,,NORMAL
 46,PA31,,Available,,,,,,NORMAL

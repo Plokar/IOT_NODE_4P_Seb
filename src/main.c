@@ -42,6 +42,10 @@
 #define EEPROM_SIZE        (512UL * 1024UL)
 #define EEPROM_PAGE_SIZE   256UL
 
+#define N (RB_CAPACITY + 1)
+#define RB_CAPACITY 10
+#define RB_BASE_ADDR 0x0100UL
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Main Entry Point
@@ -52,6 +56,7 @@ int sensor_read = 0;
 char sign;
 float teplota;
 uint16_t real_teplota;
+uint8_t head = 0, tail = 0;
 
 uint8_t data[2];
 
@@ -80,6 +85,8 @@ DeviceConfig_t config = {
 };
 
 DeviceConfig_t loaded_config;
+
+
 
 static bool SPI_Transfer(uint8_t *tx, uint8_t *rx, size_t lenght) {
     if (!SERCOM2_SPI_WriteRead(tx, lenght, rx, lenght)) {
@@ -287,7 +294,7 @@ void mcp9808_temp_read() {
     teplota = (real_teplota & 0xFFF) / 16.0f;
 
 
-    printf("%c %0.3f\r\n", (sign == 1) ? '-' : '+', teplota);
+    //printf("%c %0.3f\r\n", (sign == 1) ? '-' : '+', teplota);
 }
 
 void zapis_conf(void) {
@@ -317,6 +324,36 @@ void nacti_conf(void) {
     }
 }
 
+static uint32_t rb_addr(uint8_t index){
+    return RB_BASE_ADDR + ((uint32_t)index * sizeof(float));
+}
+
+bool push(float x){
+    uint8_t next = (head + 1) % N;
+    
+    if(!EEPROM_WriteBuffer(rb_addr(head),(const uint8_t *)&x, sizeof(float))){
+        return false;
+    }
+    
+    if(next == tail){
+        tail = (tail + 1) % N;
+    }
+    
+    head = next;
+    return true;
+}
+
+bool pop(float *x){
+    
+    if(head == tail)return false;
+    
+    if(!EEPROM_ReadBuffer(rb_addr(tail),(uint8_t *)x, sizeof(float))){
+        return false;
+    }
+    tail = (tail + 1) % N;
+    return true;
+}
+
 int main(void) {
     /* Initialize all modules */
     SYS_Initialize(NULL);
@@ -327,8 +364,12 @@ int main(void) {
 
     while (true) {
 
-        //mcp9808_temp_read();
-
+//        mcp9808_temp_read();
+//        push(teplota);
+//        float hodnota;
+//        while (pop(&hodnota)){
+//            printf("Nacteno %0.3f C\r\n", hodnota);
+//        }
 
         /*
         if (EEPROM_WriteByte(0x0010, 0xAB)) {

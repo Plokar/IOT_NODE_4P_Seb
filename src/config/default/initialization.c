@@ -172,6 +172,10 @@ void SYS_Initialize ( void* data )
 
     SERCOM0_I2C_Initialize();
 
+    EIC_Initialize();
+
+    RTC_Initialize();
+
 
     NVIC_Initialize();
 
