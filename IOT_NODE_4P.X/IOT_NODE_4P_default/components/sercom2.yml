@@ -22,8 +22,8 @@ data:
     - children:
       - attributes:
           id: sercom2
-          x: '191'
-          y: '203'
+          x: '447'
+          y: '417'
         type: ElementPosition
       type: ElementPositions
     type: ComponentGraph

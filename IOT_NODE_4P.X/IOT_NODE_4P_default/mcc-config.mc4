@@ -18,7 +18,7 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\PIC32CM5164JH01048.ld
   hash: 7f48858aa6a44ff9bba0351aaadb5f4f8e092cd5622a3fd22cec3681e72cf8e4
 - file: ..\src\config\default\definitions.h
-  hash: 6dea161bae90ef48d39d183dc95e6c5d83a2a386ff0f1e1d7a3d0ed3b870011e
+  hash: 51fa424f6646e409e684c0d6f80b87c69ec02bdebb8c72062c96fa4a3f70e47e
 - file: ..\src\config\default\device.h
   hash: 028a8ade942049353fea645d2a076e9ec65e3b2f067651c94c822da007c01c73
 - file: ..\src\config\default\device_cache.h
@@ -28,7 +28,7 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\exceptions.c
   hash: d1567a190561858cc1cb7e796cf1a29720e52b9799bbd88b087993d8539e137f
 - file: ..\src\config\default\initialization.c
-  hash: 05fa66eee8eac5199a1e3bbae9f21afbbaf21acf1d461b7ed283ce8307a3b54d
+  hash: 143b4ef1f5dc626687f0f4eaa50fe38d5874bce42c0a5af84315ad6f521655ba
 - file: ..\src\config\default\interrupts.c
   hash: 08733abe403f162cff625cb2a7d8bd34ef52d14ab45ae35a36229e1eddfb5c12
 - file: ..\src\config\default\interrupts.h
@@ -52,9 +52,9 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\peripheral\nvmctrl\plib_nvmctrl.h
   hash: 37a2fe49c8f5ae3ff7de4dc79dc6742aa04f80f1bbe21c15d8abab57a391c64e
 - file: ..\src\config\default\peripheral\port\plib_port.c
-  hash: 57cd499f88b75de65a0f7f2e4822bc77ebe724433a072e3efd3d506399103278
+  hash: a4bf4291bad5e560da25061de807df719191931da7fd0465f92b14800b5d0c9f
 - file: ..\src\config\default\peripheral\port\plib_port.h
-  hash: 8a513eddad3a6b4cf6130ea19ebb7c7c83a98942830d2439d0ddefade1afb4e1
+  hash: 080cc6bced85458b9185d593147864458f7881d0cb5a4b4f29aa7068b9c8a20b
 - file: ..\src\config\default\peripheral\sercom\i2c_master\plib_sercom0_i2c_master.c
   hash: 41f5c4335dff3fe2e132ae32574c4b12c634374e36e3d31c12a8379084fbca23
 - file: ..\src\config\default\peripheral\sercom\i2c_master\plib_sercom0_i2c_master.h
@@ -74,7 +74,7 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\peripheral\sercom\usart\plib_sercom_usart_common.h
   hash: 3653b66472c558c50f7037a1dd25d2678e9a13aa718f3c53a2195e6f3919ea48
 - file: ..\src\config\default\pin_configurations.csv
-  hash: dfe9e868b326abde152319b04558946c8c8964f71c6a4184917ff377f3534531
+  hash: 6f0d94f3c593a563518c86954f1ee4b588bcd290946e7eabb173729985df3a0c
 - file: ..\src\config\default\startup_xc32.c
   hash: 94d5747e403f5e3307f1207e4e51032561b25d8e885100b0097eb1979bb9d8c2
 - file: ..\src\config\default\stdio\xc32_monitor.c

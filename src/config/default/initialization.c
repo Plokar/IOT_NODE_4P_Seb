@@ -162,9 +162,9 @@ void SYS_Initialize ( void* data )
 
 
 
-    NVMCTRL_Initialize( );
-
     SERCOM2_SPI_Initialize();
+
+    NVMCTRL_Initialize( );
 
     SERCOM1_USART_Initialize();
 
